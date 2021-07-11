@@ -81,6 +81,16 @@ const product = (props) => {
     top = <span>Top artikal</span>;
   }
 
+  let specifications = props.product.specifications.map((specification) => {
+    return (
+      <span key={specification.id}>
+        {specification.name}: {specification.value}
+      </span>
+    );
+  });
+
+  console.log(specifications);
+
   return (
     <div className="product">
       <div className="product_img">
@@ -92,7 +102,11 @@ const product = (props) => {
       </div>
       <div className="product_content">
         {stars}
-        {noStars} ({props.product.votes})<h3>{props.product.name}</h3>
+        {noStars} ({props.product.votes})
+        <h3>{props.product.name}</h3>
+        <div className="product_specification">
+          {specifications}
+        </div>
         <div className="product_content_price">
           {old}
           <div className="product_content_price_block">
